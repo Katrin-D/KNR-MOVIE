@@ -1,0 +1,55 @@
+h1 {
+	color: 333;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+
+.form-control{
+	width: 200px;
+}
+
+
+.edit:hover {
+	color: #00ba67;
+}
+
+.remove:hover {
+	color: #f00;
+}
+
+body{
+	padding: 30px;
+	background-color: #f1f1f1;
+}
+
+
+thead {
+	color: #888;
+	font-size: 13px;
+}
+
+td#price {
+	font-size: 24px;
+}
+
+.left {
+	padding: 5px; /* Поля вокруг текста */
+    float: left; /* Обтекание по правому краю */
+    width: 60%;
+    margin-right: 50px;
+}
+
+.right {
+	position: relative;
+	background-color: #fff;
+	border-radius: 6px;
+	padding-top: 30px;
+	padding-left: 40px;
+
+    width: 400px; /* Ширина слоя */
+    height: 300px;
+    float: left;
+}
+
+.lp {}
