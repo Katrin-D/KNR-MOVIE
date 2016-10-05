@@ -8,3 +8,46 @@ h1 {
     
 }
 
+.head-table .dropdown-toggle {
+	width: 100%
+}
+
+.edit:hover {
+	color: #00ba67;
+}
+
+.remove:hover {
+	color: #f00;
+} 
+
+.form-control{
+	width: 200px;
+}
+
+thead {
+	color: #888;
+	font-size: 13px;
+}
+
+td#price {
+	font-size: 24px;
+}
+
+.left {
+	padding: 5px; /* Поля вокруг текста */
+    float: left; /* Обтекание по правому краю */
+    width: 60%;
+    margin-right: 50px;
+}
+
+.right {
+	position: relative;
+	background-color: #fff;
+	border-radius: 6px;
+	padding-top: 30px;
+	padding-left: 40px;
+
+    width: 400px; /* Ширина слоя */
+    height: 300px;
+    float: left;
+}
