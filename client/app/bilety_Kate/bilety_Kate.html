@@ -1,39 +1,75 @@
-
-<div class="container-fluid">
-    <div class="row">
-       
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-            <table width="650" border="1" cellspacing="0" cellpadding="5" class="">
+<div class="left">
+    <div ng-controller="TicketCtrl as tt">    
+         
+        <table class="table table-hover">
+            <thead>
                 <tr>
-                    <th scope="col">Поле 1</th>
-                    <th scope="col">Поле 2</th>
-                    <th scope="col">Поле 3</th>
-                    <th scope="col">Поле 4</th>
-                    <th scope="col">Поле 5</th>
-                    <th scope="col">Поле 6</th>
+                    <th>Номер заказа</th>
+                    <th>Фильм</th>
+                    <th>Колличество</th>
+                    <th>Цена</th>
+                    <!-- <th class="icon">Редактировать</th> -->
                 </tr>
+            </thead>
+            <tbody>
+                        <tr ng-repeat="ticket in tt.tickets">
+                            <td><span ng-bind="ticket.number"></span></td>
+                            <td><span ng-bind="ticket.name"></span></td>
+                            <td><span ng-bind="ticket.amount"></span></td>
+                            <td><span ng-bind="ticket.cost"></span></td>
+                        </tr>
+            </tbody>
+            <!-- <tbody>
                 <tr>
-                    <td>Значение 1</td>
-                    <td>Значение 2</td>
-                    <td>Значение 3</td>
-                    <td>Значение 4</td>
-                    <td>Значение 5</td>
+                    <td>1</td>
+                    <td>Название фильма
+                        <p>
+                            место время фильма Номер зала</p>
+                    </td>
+                    <td>1</td>
+                    <td id="price">60.00 грн</td>
                     <td>
-                        <input type="checkbox" name="option1" value="a1" checked>
+                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td>Значение 1</td>
-                    <td>Значение 2</td>
-                    <td>Значение 3</td>
-                    <td>Значение 4</td>
-                    <td>Значение 5</td>
+                    <td>2</td>
+                    <td>Ангелы Чарли
+                        <p><i>3D</i></p>
+                    </td>
+                    <td>3</td>
+                    <td id="price">90.00 грн</td>
                     <td>
-                        <input type="checkbox" name="option2" value="a2">
+                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
                     </td>
                 </tr>
-            </table>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+                <tr>
+                    <td>3</td>
+                    <td>У озера
+                        <p><i>2D</i></p>
+                    </td>
+                    <td>1</td>
+                    <td id="price">30.00 грн</td>
+                    <td>
+                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>В облака
+                        <p><i>3D</i></p>
+                    </td>
+                    <td>2</td>
+                    <td id="price">100.00 грн</td>
+                    <td>
+                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
+                    </td>
+                </tr>
+            </tbody> -->
+        </table>
     </div>
 </div>

@@ -1,1 +1,1 @@
-angular.module("KNR MOVIE", []);
+angular.module('knr_movie',[]);
