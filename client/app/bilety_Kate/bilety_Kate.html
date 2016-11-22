@@ -1,75 +1,64 @@
 <div class="left">
-    <div ng-controller="TicketCtrl as tt">    
-         
-        <table class="table table-hover">
+    <div ng-controller="TicketCtrl as tt">
+        <table class="table table-bordered  table-hover">
             <thead>
                 <tr>
-                    <th>Номер заказа</th>
-                    <th>Фильм</th>
-                    <th>Колличество</th>
-                    <th>Цена</th>
-                    <!-- <th class="icon">Редактировать</th> -->
+                    <th>Номер заказа <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-click="tt.sort('number')"></th>
+                    <th>Фильм <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-click="tt.sort('name')"></span></th>
+                    <th>Колличество <span class="glyphicon glyphicon-sort" aria-hidden="true"  ng-click="tt.sort('amount')"></span></th>
+                    <th>Цена <span class="glyphicon glyphicon-sort" aria-hidden="true"  ng-click="tt.sort('cost')"></span></th>
+                    <th>Редактировать</th>
                 </tr>
             </thead>
             <tbody>
-                        <tr ng-repeat="ticket in tt.tickets">
-                            <td><span ng-bind="ticket.number"></span></td>
-                            <td><span ng-bind="ticket.name"></span></td>
-                            <td><span ng-bind="ticket.amount"></span></td>
-                            <td><span ng-bind="ticket.cost"></span></td>
-                        </tr>
+                <tr ng-repeat="ticket in tt.tickets | orderBy:tt.sortField:tt.reverse" ng-class="tt.evaluateMeal(ticket)">
+                    <td><span ng-bind="ticket.number"></span></td>
+                    <td><span ng-bind="ticket.name"></span></td>
+                    <td><span ng-bind="ticket.amount"></span></td>
+                    <td><span ng-bind="ticket.cost"></span></td>
+                    <td><span class="glyphicon glyphicon-pencil edit" ng-click="tt.edit(ticket)" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-trash remove" aria-hidden="true"></span></td>
+                </tr>
+
+                
+                <tr ng-if="tt.isViewEditing">
+                    <td></td>
+                    <td><input type="text" class="form-control" ng-model="tt.newTicket.name"></td>
+                    <td><input type="text" class="form-control" ng-model="tt.newTicket.amount"></td>
+                    <td><input type="text" class="form-control" ng-model="tt.newTicket.cost"></td>
+                </tr>
+
             </tbody>
-            <!-- <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Название фильма
-                        <p>
-                            место время фильма Номер зала</p>
-                    </td>
-                    <td>1</td>
-                    <td id="price">60.00 грн</td>
-                    <td>
-                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Ангелы Чарли
-                        <p><i>3D</i></p>
-                    </td>
-                    <td>3</td>
-                    <td id="price">90.00 грн</td>
-                    <td>
-                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>У озера
-                        <p><i>2D</i></p>
-                    </td>
-                    <td>1</td>
-                    <td id="price">30.00 грн</td>
-                    <td>
-                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>В облака
-                        <p><i>3D</i></p>
-                    </td>
-                    <td>2</td>
-                    <td id="price">100.00 грн</td>
-                    <td>
-                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
-                    </td>
-                </tr>
-            </tbody> -->
         </table>
-    </div>
+        <button class='btn btn--m btn--black btn--flat' ng-click='tt.add()' ng-if="!tt.isViewEditing">Добавить</button>
+         <button class="btn btn--m btn--black btn--flat" ng-click="tt.save()" ng-if="tt.isViewEditing">Сохранить</button>
+         <button class="btn btn--m btn--orange btn--flat" ng-click="tt.cancel()" ng-if="tt.isViewEditing">Отменить</button>
+
+ <!--    <div flex-container="row" flex-gutter="24" ng-if="tt.newTicket != null">
+     <div>
+     <table class="table table-bordered  table-hover">
+         <tr>
+             <td>
+                 <input type="text" ng-model="tt.newTicket.number">
+             </td>
+             <td>
+                 <input type="text" ng-model="tt.newTicket.name">
+             </td>
+             <td>
+                 <input type="text" ng-model="tt.newTicket.amount">
+             </td>
+             <td>
+                 <input type="text" ng-model="tt.newTicket.cost">
+             </td>
+             <td><span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span>
+                 <span class="glyphicon glyphicon-trash remove" aria-hidden="true"></span></td>
+         </tr>
+     </table>
+     </div>
+     <div class="card__actions">
+         <button class="btn btn--m btn--black btn--flat" ng-click="tt.save()" >Сохранить</button>
+         <button class="btn btn--m btn--orange btn--flat" ng-click="tt.cancel()" >Отменить</button>
+     </div>
+ </div> -->
+        </div>
 </div>

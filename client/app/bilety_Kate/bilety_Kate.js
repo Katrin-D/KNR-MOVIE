@@ -6,16 +6,70 @@
     function TicketCtrl() {
 
         var vm = this;
-        vm.tickets=[];
+        vm.tickets = [];
+
+        vm.newTicket = null;
+        vm.isViewEditing = false;
+
+        vm.sortField = "cost";
+        vm.reverse = false;
+
+        
+        vm.evaluateMeal = evaluateMeal;
+        vm.add = add;
+        vm.cancel = cancel;
+        vm.edit = edit;
+        vm.save = save;
+        vm.sort = sort;
+
 
         activate();
 
         function activate() {
-            vm.tickets=[
-                {number: 1, name: 'Ангелі чарли', amount: 3, cost: 90},
-                {number: 2, name: 'У озера', amount: 2, cost: 30},
-                {number: 3, name: 'В небо', amount: 2, cost: 100},
+            vm.tickets = [
+                { number: 1, name: 'Ангелы Чарли', amount: 3, cost: 90 },
+                { number: 2, name: 'У озера', amount: 2, cost: 30 },
+                { number: 3, name: 'В небо', amount: 2, cost: 120 }
             ];
+        }
+
+        function add() {
+            console.log("Button add clicked");
+            vm.newTicket = { number: 0, name: 'Введите название фильма', amount: 0, cost: 0 };
+            vm.isViewEditing = true;
+        }
+        
+        function cancel() {
+            console.log("Button Cancel clicked");
+            vm.isViewEditing = false;
+            vm.newTicket = null;
+        }
+
+        function edit(ticket) {
+            console.log("Row was clicked");
+            vm.newTicket = angular.copy(ticket);
+            vm.newTicket != null;
+            vm.isViewEditing = true;
+            
+        }
+
+        function save() {
+            console.log("Button Save clicked");
+        }
+
+        function evaluateMeal(ticket) {
+            if (ticket.cost > 100) return "bad";
+            if (ticket.cost > 50 && ticket.cost <= 100) return "normal";
+            if (ticket.cost > 0 && ticket.cost <= 50) return "good";
+        }
+
+        function sort(fieldName) {
+            if (vm.sortField === fieldName) {
+                vm.reverse = !vm.reverse;
+            } else {
+                vm.sortField = fieldName;
+                vm.reverse = false;
+            }
         }
     }
 })()
