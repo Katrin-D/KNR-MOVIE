@@ -1,0 +1,75 @@
+<div class="left">
+    <div ng-controller="TicketCtrl as tt">    
+         
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Номер заказа</th>
+                    <th>Фильм</th>
+                    <th>Колличество</th>
+                    <th>Цена</th>
+                    <!-- <th class="icon">Редактировать</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                        <tr ng-repeat="ticket in tt.tickets">
+                            <td><span ng-bind="ticket.number"></span></td>
+                            <td><span ng-bind="ticket.name"></span></td>
+                            <td><span ng-bind="ticket.amount"></span></td>
+                            <td><span ng-bind="ticket.cost"></span></td>
+                        </tr>
+            </tbody>
+            <!-- <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Название фильма
+                        <p>
+                            место время фильма Номер зала</p>
+                    </td>
+                    <td>1</td>
+                    <td id="price">60.00 грн</td>
+                    <td>
+                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Ангелы Чарли
+                        <p><i>3D</i></p>
+                    </td>
+                    <td>3</td>
+                    <td id="price">90.00 грн</td>
+                    <td>
+                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>У озера
+                        <p><i>2D</i></p>
+                    </td>
+                    <td>1</td>
+                    <td id="price">30.00 грн</td>
+                    <td>
+                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>В облака
+                        <p><i>3D</i></p>
+                    </td>
+                    <td>2</td>
+                    <td id="price">100.00 грн</td>
+                    <td>
+                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
+                    </td>
+                </tr>
+            </tbody> -->
+        </table>
+    </div>
+</div>
