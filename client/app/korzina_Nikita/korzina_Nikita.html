@@ -1,90 +1,29 @@
 <div class="left">
-    <div class="lp">
-        <table class="table table-hover">
-            <thead>
-                <tr>
+<div class="data-table-container" ng-controller="bucCtrl as dc">
+    <table class="table table-bordered  table-hover">
+        <thead>
+            <tr>
                     <th>Номер заказа</th>
                     <th>Название</th>
-                    <th>Колличество</th>
+                    <th>Количество</th>
                     <th>Цена</th>
-                    <th class="icon">Редактировать</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Название фильма
-                        <p>
-                            место время фильма Номер зала</p>
-                    </td>
-                    <td>1</td>
-                    <td id="price">60.00 грн</td>
-                    <td>
-                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Набор "Cупер борщец"
-                        <p><i>300 г.</i></p>
-                    </td>
-                    <td>1</td>
-                    <td id="price">40.00 грн</td>
-                    <td>
-                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Пивасик "Стасик"
-                        <p><i>0.5 л</i></p>
-                    </td>
-                    <td>1</td>
-                    <td id="price">25.00 грн</td>
-                    <td>
-                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Семки "Э свыш"
-                        <p><i>200 г.</i></p>
-                    </td>
-                    <td>1</td>
-                    <td id="price">20.00 грн</td>
-                    <td>
-                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span ng-bind="row.nomer"></span>tghyuj</td>
+                <td><span ng-bind="row.name"></span></td>
+                <td><span ng-bind="row.count"></span></td>
+                <td><span ng-bind="row.price"></span></td>
+            </tr>
+            <!-- <tr>
+                <td></td>
+                <td><input type="text" class='form-control' ng-model='dc.editedBuc.nomer' placeholder='Film' /></td> 
+            </tr> -->
+        </tbody>
+    </table>
+        <button class='btn btn--m btn--black btn--flat' ng-click='tt.add()' ng-if="!tt.isViewEditing">Добавить</button>
+         <button class="btn btn--m btn--black btn--flat" ng-click="tt.save()" ng-if="tt.isViewEditing">Сохранить</button>
+         <button class="btn btn--m btn--orange btn--flat" ng-click="tt.cancel()" ng-if="tt.isViewEditing">Отменить</button>
 </div>
-<div class="right">
-    <div class="block">
-        <form action="" method="POST" class="form-horizontal" role="form">
-            <div class="form-group">
-            </div>
-            <h3>Дополнительные услуги</h3> Ввести промокод
-            <input type="text" class="form-control" placeholder="XXX-XXX-XXX">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value=""> Купить очки 3д
-                </label>
-            </div>
-            <div class="checkbox disabled">
-                <label>
-                    <input type="checkbox" value=""> Купить абонимент на 1 месяц
-                </label>
-            </div>
-            <br>
-            <p>
-                <button type="button" class="btn btn-info">Оформить заказ</button>
-            </p>
-        </form>
-    </div>
 </div>
