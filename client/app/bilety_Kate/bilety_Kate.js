@@ -7,13 +7,15 @@
 
         var vm = this;
         vm.tickets = [];
+        //origin;
 
         vm.newTicket = null;
         vm.isViewEditing = false;
+        vm.isEdit = false;
 
-        vm.sortField = "cost";
+        vm.sortField ='number';
         vm.reverse = false;
-
+        vm.filterByName = "";
         
         vm.evaluateMeal = evaluateMeal;
         vm.add = add;
@@ -21,6 +23,7 @@
         vm.edit = edit;
         vm.save = save;
         vm.sort = sort;
+
 
 
         activate();
@@ -35,26 +38,35 @@
 
         function add() {
             console.log("Button add clicked");
-            vm.newTicket = { number: 0, name: 'Введите название фильма', amount: 0, cost: 0 };
+            vm.newTicket = { number: vm.tickets.length+1, name: 0, amount: 0, cost: 0 };
             vm.isViewEditing = true;
         }
         
         function cancel() {
             console.log("Button Cancel clicked");
             vm.isViewEditing = false;
+            vm.isEdit = false;
             vm.newTicket = null;
         }
 
         function edit(ticket) {
             console.log("Row was clicked");
             vm.newTicket = angular.copy(ticket);
-            vm.newTicket != null;
             vm.isViewEditing = true;
+            vm.isEdit = true;
             
         }
 
         function save() {
             console.log("Button Save clicked");
+            if(vm.isEdit) {
+                console.log("Button S");
+                vm.tickets[vm.newTicket.number-1] = vm.newTicket;
+                vm.isEdit = false;
+            }else {
+                vm.tickets.push(vm.newTicket);
+            }
+            vm.cancel();
         }
 
         function evaluateMeal(ticket) {

@@ -1,5 +1,8 @@
 <div class="left">
     <div ng-controller="TicketCtrl as tt">
+        <div class="form-group">
+          <input type="text" ng-model="tt.filterByName" class="form-control" placeholder="Поиск по названию">
+        </div>
         <table class="table table-bordered  table-hover">
             <thead>
                 <tr>
@@ -11,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="ticket in tt.tickets | orderBy:tt.sortField:tt.reverse" ng-class="tt.evaluateMeal(ticket)">
+                <tr ng-repeat="ticket in tt.tickets | filter:{name: tt.filterByName} | orderBy:tt.sortField:tt.reverse" ng-class="tt.evaluateMeal(ticket)">
                     <td><span ng-bind="ticket.number"></span></td>
                     <td><span ng-bind="ticket.name"></span></td>
                     <td><span ng-bind="ticket.amount"></span></td>
@@ -23,9 +26,9 @@
                 
                 <tr ng-if="tt.isViewEditing">
                     <td></td>
-                    <td><input type="text" class="form-control" ng-model="tt.newTicket.name"></td>
-                    <td><input type="text" class="form-control" ng-model="tt.newTicket.amount"></td>
-                    <td><input type="text" class="form-control" ng-model="tt.newTicket.cost"></td>
+                    <td><input type="text" class="form-control" ng-model="tt.newTicket.name" placeholder="Введите название фильма"></td>
+                    <td><input type="text" class="form-control" ng-model="tt.newTicket.amount" placeholder="0"></td>
+                    <td><input type="text" class="form-control" ng-model="tt.newTicket.cost" placeholder="0"></td>
                 </tr>
 
             </tbody>
