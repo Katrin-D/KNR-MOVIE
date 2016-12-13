@@ -1,34 +1,83 @@
 <div class="container" ng-controller="bar_Regina as bar">
-    <button class="btn btn-success add">Добавить</button>
-    <table class="table table-bordered">
+    <button class="btn btn-success" ng-click="bar.add()">Добавить</button>
+    <table class="table table-hover">
         <thead class="head-table">
             <tr>
-                <td>№</td>
-                <td>Напитки</td>
-                <td>Объем</td>
-                <td>Добавки</td>
-                <td>Редактировать</td>
+                <th>№
+                    <button class="btn btn-default btn-xs" ng-click="bar.sort(number)">
+                        <i class="glyphicon glyphicon-sort-by-attributes"></i>
+                    </button>
+                </th>
+                <th>Напитки
+                    <button class="btn btn-default btn-xs" ng-click="bar.sort(water)">
+                        <i class="glyphicon glyphicon-sort-by-attributes"></i>
+                    </button>
+                </th>
+                <th>Объем
+                    <button class="btn btn-default btn-xs" ng-click="bar.sort(liter)">
+                        <i class="glyphicon glyphicon-sort-by-attributes"></i>
+                    </button>
+                </th>
+                <th>Добавки
+                    <button class="btn btn-default btn-xs" ng-click="bar.sort(snack)">
+                        <i class="glyphicon glyphicon-sort-by-attributes"></i>
+                    </button>
+                </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <th scope="row">тут будет нужный номер
-                </th>
+                <td></td>
                 <td>
-                    <select name="" id="">
-                        <option value="" ng-repeat="rw in bar.select_water">{{rw}}</option>
+                    <input type="text" class="form-control" ng-model="bar.filter_water" placeholder="Напиток">
+                </td>
+                <td>
+                    <input type="text" class="form-control" ng-model="bar.filter_liter" placeholder="Объем">
+                </td>
+                <td>
+                    <input type="text" class="form-control" ng-model="bar.filter_snack" placeholder="Добавки">
+                </td>
+            </tr>
+            <tr ng-repeat="row in bar.table | orderBy: bar.sort_field: bar.reverse | filter: {water: bar.filter_water, liter: bar.filter_liter, snack: bar.filter_snack}">
+                <td ng-bind="row.number"></td>
+                <td>
+                    <span ng-bind="row.water"></span>
+                </td>
+                <td>
+                    <span ng-bind="row.liter"></span>
+                </td>
+                <td>
+                    <span ng-bind="row.snack"></span>
+                </td>
+                <td>
+                    <span ng-click="bar.edit(row)" class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span>
+                    <span ng-click="bar.delete(row)" class="glyphicon glyphicon-trash remove" aria-hidden="true"></span>
+                </td>
+            </tr>
+            <tr ng-if="bar.is_edit">
+                <td ng-bind="bar.current_row.number"></td>
+                <td>
+                    <select class="form-control" ng-model="bar.current_row.water">
+                        <option ng-repeat="rw in bar.dropdown_water" value="{{rw}}" ng-selected="rw == bar.current_row.water">{{rw}}</option>
                     </select>
                 </td>
                 <td>
-                    <select name="" id="">
-                        <option value="" ng-repeat="rw in bar.select_liters">{{rw}}</option>
+                    <select class="form-control" ng-model="bar.current_row.liter">
+                        <option ng-repeat="rw in bar.dropdown_liter" value="{{rw}}" ng-selected="rw == bar.current_row.liter">{{rw}}</option>
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" ng-model="bar.current_row.snack">
+                        <option ng-repeat="rw in bar.dropdown_snack" value="{{rw}}" ng-selected="rw == bar.current_row.snack">{{rw}}</option>
+                    </select>
                 </td>
                 <td></td>
-                <td>
-                    <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-trash remove" aria-hidden="true"></span>
-                </td>
             </tr>
         </tbody>
     </table>
+    <div ng-if="bar.is_edit">
+        <button class="btn btn-success" ng-click="bar.save()">Сохранить</button>
+        <button class="btn btn-danger" ng-click="bar.cancel()">Отмена</button>
+    </div>
 </div>
