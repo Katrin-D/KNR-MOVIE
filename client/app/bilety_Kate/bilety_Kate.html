@@ -1,15 +1,15 @@
 <div class="left">
     <div ng-controller="TicketCtrl as tt">
         <div class="form-group">
-          <input type="text" ng-model="tt.filterByName" class="form-control" placeholder="Поиск по названию">
+            <input type="text" ng-model="tt.filterByName" class="form-control" placeholder="Поиск по названию">
         </div>
         <table class="table table-bordered  table-hover">
             <thead>
                 <tr>
                     <th>Номер заказа <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-click="tt.sort('number')"></th>
                     <th>Фильм <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-click="tt.sort('name')"></span></th>
-                    <th>Количество <span class="glyphicon glyphicon-sort" aria-hidden="true"  ng-click="tt.sort('amount')"></span></th>
-                    <th>Цена <span class="glyphicon glyphicon-sort" aria-hidden="true"  ng-click="tt.sort('cost')"></span></th>
+                    <th>Количество <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-click="tt.sort('amount')"></span></th>
+                    <th>Цена <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-click="tt.sort('cost')"></span></th>
                     <th>Редактировать</th>
                 </tr>
             </thead>
@@ -22,22 +22,40 @@
                     <td><span class="glyphicon glyphicon-pencil edit" ng-click="tt.edit(ticket)" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-trash remove" aria-hidden="true" ng-click="tt.remove(index)"></span></td>
                 </tr>
-
                 <tr ng-if="tt.isViewEditing">
                     <td></td>
-                    <td><input type="text" class="form-control" ng-model="tt.newTicket.name" placeholder="Введите название фильма"></td>
-                    <td><input type="text" class="form-control" ng-model="tt.newTicket.amount" placeholder="0"></td>
-                    <td><input type="text" class="form-control" ng-model="tt.newTicket.cost" placeholder="0"></td>
+                    <td>
+                        <input type="text" class="form-control" ng-model="tt.newTicket.name" placeholder="Введите название фильма">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" ng-model="tt.newTicket.amount" placeholder="0">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" ng-model="tt.newTicket.cost" placeholder="0">
+                    </td>
                     <td></td>
                 </tr>
-
             </tbody>
         </table>
-        <button class='btn btn-info' ng-click='tt.add()' ng-if="!tt.isViewEditing">Добавить</button>
-         <button class="btn btn-success" ng-click="tt.save()" ng-if="tt.isViewEditing">Сохранить</button>
-         <button class="btn btn-danger" ng-click="tt.cancel()" ng-if="tt.isViewEditing">Отменить</button>
 
- <!--    <div flex-container="row" flex-gutter="24" ng-if="tt.newTicket != null">
+        <button class='btn btn-primary' ng-click='tt.add()' ng-if="!tt.isViewEditing">Добавить</button>
+        <button class="btn btn-primary" ng-if="!tt.isViewEditing" data-toggle="modal" data-target=".bs-example-modal-sm">Готово</button>
+            <div class="modal fade bs-example-modal-sm"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">х</button>
+                        <h4 class="modal-title" id="myModalLabel">Готово</h4>
+                        </div>
+                        <div class="modal-body">
+                            Выбранные билеты перемещены в корзину! Там вы можете оформить заказ. Но прежде предлагаем перейти на вкладку "Бар" и выбрать что-нибудь вкусненькое 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <button class="btn btn-success" ng-click="tt.save()" ng-if="tt.isViewEditing">Сохранить</button>
+        <button class="btn btn-danger" ng-click="tt.cancel()" ng-if="tt.isViewEditing">Отменить</button>
+        <!--    <div flex-container="row" flex-gutter="24" ng-if="tt.newTicket != null">
      <div>
      <table class="table table-bordered  table-hover">
          <tr>
@@ -63,5 +81,5 @@
          <button class="btn btn--m btn--orange btn--flat" ng-click="tt.cancel()" >Отменить</button>
      </div>
  </div> -->
-        </div>
+    </div>
 </div>
