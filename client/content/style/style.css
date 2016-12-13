@@ -142,12 +142,13 @@ header {
     left: 0;
     z-index: 999;
     background-color: #212322;
+    text-decoration: none;
 }
 
-header h1#logo {
-    display: inline-block;
+header h1 {
+    display: inline;
     height: 150px;
-    line-height: 100px;
+    /* line-height: 100px; */
     float: left;
     font-family: "Oswald", sans-serif;
     font-size: 60px;
@@ -163,11 +164,15 @@ header h1#logo {
 header nav {
     display: inline-block;
     float: right;
+    
+    margin-top: 30px;
 }
 
 header nav a {
-    line-height: 100px;
-    margin-left: 20px;
+    /* line-height: 100px; */
+    margin-left: 35px;
+    text-decoration: none;
+    display: inline-block;
     color: #9fdbfc;
     font-weight: 700;
     font-size: 18px;
@@ -180,13 +185,14 @@ header nav a {
 
 header nav a:hover {
     color: white;
+    text-decoration: none;
 }
 
 header.smaller {
     height: 75px;
 }
 
-header.smaller h1#logo {
+header.smaller h1 {
     width: 150px;
     height: 75px;
     line-height: 75px;
@@ -207,10 +213,9 @@ header.smaller nav a {
 
 .clearfix:after {
     visibility: hidden;
-    display: block;
-    content: "";
+    display: inline-block;
     clear: both;
-    height: 0;
+    text-decoration: none;
 }
 
 .bad {

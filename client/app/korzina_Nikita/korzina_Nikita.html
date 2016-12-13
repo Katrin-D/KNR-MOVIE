@@ -1,90 +1,60 @@
 <div class="left">
-    <div class="lp">
-        <table class="table table-hover">
+    <div ng-controller="BucketCtrl as bu">
+        <div class="form-group">
+        </div>
+        <table class="table table-bordered  table-hover">
             <thead>
                 <tr>
-                    <th>Номер заказа</th>
-                    <th>Название</th>
-                    <th>Колличество</th>
-                    <th>Цена</th>
-                    <th class="icon">Редактировать</th>
+                    <th>Номер заказа <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-click="bu.sort('number')"></th>
+                    <th>Наименнование <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-click="bu.sort('name')"></span></th>
+                    <th>Колличество <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-click="bu.sort('amount')"></span></th>
+                    <th>Цена грн. <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-click="bu.sort('cost')"></span></th>
+                    <th>Редактировать</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Название фильма
-                        <p>
-                            место время фильма Номер зала</p>
-                    </td>
-                    <td>1</td>
-                    <td id="price">60.00 грн</td>
-                    <td>
-                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
-                    </td>
+                <tr ng-repeat="bucket in bu.bucks | orderBy:bu.sortField:bu.reverse" ng-class="bu.evaluateMeal(bucket)">
+                    <td><span ng-bind="bucket.number"></span></td>
+                    <td><span ng-bind="bucket.name"></span></td>
+                    <td><span ng-bind="bucket.amount"></span></td>
+                    <td><span ng-bind="bucket.cost"></span></td>
+                    <td><span class="glyphicon glyphicon-pencil edit" ng-click="bu.edit(bucket)" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-trash remove" aria-hidden="true"></span></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Набор "Cупер борщец"
-                        <p><i>300 г.</i></p>
-                    </td>
-                    <td>1</td>
-                    <td id="price">40.00 грн</td>
+                <tr ng-if="bu.isViewEditing">
+                    <td></td>
                     <td>
-                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
+                        <input type="text" class="form-control" ng-model="bu.newBucket.name" placeholder="Введите название фильма">
                     </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Пивасик "Стасик"
-                        <p><i>0.5 л</i></p>
-                    </td>
-                    <td>1</td>
-                    <td id="price">25.00 грн</td>
                     <td>
-                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
+                        <input type="text" class="form-control" ng-model="bu.newBucket.amount" placeholder="12">
                     </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Семки "Э свыш"
-                        <p><i>200 г.</i></p>
-                    </td>
-                    <td>1</td>
-                    <td id="price">20.00 грн</td>
                     <td>
-                        <span class="glyphicon glyphicon-edit edit" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
+                        <input type="text" class="form-control" ng-model="bu.newBucket.cost" placeholder="0">
                     </td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
-    </div>
-</div>
-<div class="right">
-    <div class="block">
+        <button class='btn btn-info' ng-click='bu.add()' ng-if="!bu.isViewEditing">Добавить</button>
+        <button class="btn btn-success" ng-click="bu.save()" ng-if="bu.isViewEditing">Сохранить</button>
+        <button class="btn btn-danger" ng-click="bu.cancel()" ng-if="bu.isViewEditing">Отменить</button>
         <form action="" method="POST" class="form-horizontal" role="form">
             <div class="form-group">
             </div>
-            <h3>Дополнительные услуги</h3> Ввести промокод
+            <h3>Дополнительные услуги</h3> <h4>Ввести промокод</h4>
             <input type="text" class="form-control" placeholder="XXX-XXX-XXX">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value=""> Купить очки 3д
+                    <input type="checkbox" value="korzina_Nikita.html"> <span>Купить очки 3д</span><Br>
+                     <input type="checkbox" value=""> <span>Купить абонимент на 1 месяц</span>
                 </label>
             </div>
-            <div class="checkbox disabled">
-                <label>
-                    <input type="checkbox" value=""> Купить абонимент на 1 месяц
-                </label>
-            </div>
-            <br>
-            <p>
                 <button type="button" class="btn btn-info">Оформить заказ</button>
             </p>
         </form>
     </div>
+</div>
+</div>
 </div>

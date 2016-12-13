@@ -17,12 +17,13 @@
         vm.reverse = false;
         vm.filterByName = "";
         
-        vm.evaluateMeal = evaluateMeal;
+        vm.selection = selection;
         vm.add = add;
         vm.cancel = cancel;
         vm.edit = edit;
         vm.save = save;
         vm.sort = sort;
+        vm.remove = remove;
 
 
 
@@ -57,6 +58,10 @@
             
         }
 
+        function remove(index) {
+       vm.tickets.splice(index, 1);
+        }
+
         function save() {
             console.log("Button Save clicked");
             if(vm.isEdit) {
@@ -69,7 +74,7 @@
             vm.cancel();
         }
 
-        function evaluateMeal(ticket) {
+        function selection(ticket) {
             if (ticket.cost > 100) return "bad";
             if (ticket.cost > 50 && ticket.cost <= 100) return "normal";
             if (ticket.cost > 0 && ticket.cost <= 50) return "good";

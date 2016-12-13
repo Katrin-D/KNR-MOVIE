@@ -8,34 +8,34 @@
                 <tr>
                     <th>Номер заказа <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-click="tt.sort('number')"></th>
                     <th>Фильм <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-click="tt.sort('name')"></span></th>
-                    <th>Колличество <span class="glyphicon glyphicon-sort" aria-hidden="true"  ng-click="tt.sort('amount')"></span></th>
+                    <th>Количество <span class="glyphicon glyphicon-sort" aria-hidden="true"  ng-click="tt.sort('amount')"></span></th>
                     <th>Цена <span class="glyphicon glyphicon-sort" aria-hidden="true"  ng-click="tt.sort('cost')"></span></th>
                     <th>Редактировать</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="ticket in tt.tickets | filter:{name: tt.filterByName} | orderBy:tt.sortField:tt.reverse" ng-class="tt.evaluateMeal(ticket)">
+                <tr ng-repeat="ticket in tt.tickets | filter:{name: tt.filterByName} | orderBy:tt.sortField:tt.reverse" ng-class="tt.selection(ticket)">
                     <td><span ng-bind="ticket.number"></span></td>
                     <td><span ng-bind="ticket.name"></span></td>
                     <td><span ng-bind="ticket.amount"></span></td>
                     <td><span ng-bind="ticket.cost"></span></td>
                     <td><span class="glyphicon glyphicon-pencil edit" ng-click="tt.edit(ticket)" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-trash remove" aria-hidden="true"></span></td>
+                        <span class="glyphicon glyphicon-trash remove" aria-hidden="true" ng-click="tt.remove(index)"></span></td>
                 </tr>
 
-                
                 <tr ng-if="tt.isViewEditing">
                     <td></td>
                     <td><input type="text" class="form-control" ng-model="tt.newTicket.name" placeholder="Введите название фильма"></td>
                     <td><input type="text" class="form-control" ng-model="tt.newTicket.amount" placeholder="0"></td>
                     <td><input type="text" class="form-control" ng-model="tt.newTicket.cost" placeholder="0"></td>
+                    <td></td>
                 </tr>
 
             </tbody>
         </table>
-        <button class='btn btn--m btn--black btn--flat' ng-click='tt.add()' ng-if="!tt.isViewEditing">Добавить</button>
-         <button class="btn btn--m btn--black btn--flat" ng-click="tt.save()" ng-if="tt.isViewEditing">Сохранить</button>
-         <button class="btn btn--m btn--orange btn--flat" ng-click="tt.cancel()" ng-if="tt.isViewEditing">Отменить</button>
+        <button class='btn btn-info' ng-click='tt.add()' ng-if="!tt.isViewEditing">Добавить</button>
+         <button class="btn btn-success" ng-click="tt.save()" ng-if="tt.isViewEditing">Сохранить</button>
+         <button class="btn btn-danger" ng-click="tt.cancel()" ng-if="tt.isViewEditing">Отменить</button>
 
  <!--    <div flex-container="row" flex-gutter="24" ng-if="tt.newTicket != null">
      <div>
