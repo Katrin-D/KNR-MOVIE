@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>KNR MOVIE</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,700,400italic">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300,700">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="client/content/style/style.css" />
+</head>
+
+<body ng-app="knr_movie">
+    <div id="wrapper">
+        <header>
+            <div class="container clearfix">
+                <h1 id="logo"> KNR MOVIE  </h1>
+                <nav>
+                    <ul>
+                            <a href="#" ng-class="{active: templateUrl == 'client/app/bilety_Kate/bilety_Kate.html'}" ng-click="templateUrl = 'client/app/bilety_Kate/bilety_Kate.html'">Билеты</a>
+                            <a href="#" ng-class="{active: templateUrl == 'client/app/bar_Regina/bar_Regina.html'}" ng-click="templateUrl = 'client/app/bar_Regina/bar_Regina.html'">Бар</a>
+                            <a href="#" ng-class="{active: templateUrl == 'client/app/korzina_Nikita/korzina_Nikita.html'}" ng-click="templateUrl = 'client/app/korzina_Nikita/korzina_Nikita.html'">Корзина</a>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div id="main">
+            <!--| 
+    Инициализация переменной templateUrl значением, содержащим путь к представлению "Билеты",           | 4
+    с помощью нестандартного атрибута ngInit                                                            |-->
+            <div class="card" ng-init="templateUrl='client/app/bilety_Kate/bilety_Kate.html'"></div>
+            <div class="content-wrap">
+                <div class="card" ng-include="templateUrl">
+            </div>
+            </div>
+        </div>
+        <!--|
+    Вставка в тэга div фрагмента разметку, вынесенного в файл client/app/layout/footer.html,            | 3
+    с помощью нестандартного атрибута ngInclude                                                         |-->
+        <div class="site-footer" ng-include="'client/app/layout/footer.html'"></div>
+    </div>
+    <!--|
+    Подключение фреймворка AngularJS. *.js                                                              | 1
+                                                                                                        |-->
+    <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="client/app.js"></script>
+    <script src="client/app/bilety_Kate/bilety_Kate.js"></script>
+    <script src="client/app/bar_Regina/bar_Regina.js"></script>
+    <script src="client/app/korzina_Nikita/korzina_Nikita.js"></script>
+</body>
+
+</html>
