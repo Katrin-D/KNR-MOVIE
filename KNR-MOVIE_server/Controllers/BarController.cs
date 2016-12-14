@@ -44,7 +44,7 @@ namespace KNR_MOVIE_server.Controllers
                 Database.bar[myobject.number - 1] = myobject;
             else
                 Database.bar.Add(myobject);
-
+            Refresh_number();
             return Database.bar;
         }
 
@@ -61,7 +61,15 @@ namespace KNR_MOVIE_server.Controllers
                 if (Database.bar[i].number == id)
                     Database.bar.RemoveAt(i);
             }
+            Refresh_number();
             return Database.bar;
+        }
+        private void Refresh_number()
+        {
+            for(int i=0;i<Database.bar.Count;i++)
+            {
+                Database.bar[i].number = i+1;
+            }
         }
     }
 }

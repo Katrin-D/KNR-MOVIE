@@ -72,7 +72,7 @@
         function add() {
             console.log('add');
             vm.is_edit = true;
-            vm.current_row = { number: vm.table.length+1 };
+            vm.current_row = { number: vm.table.length + 1, water: "", liter: "", snack:"" };
         }
 
         function del(row) {
